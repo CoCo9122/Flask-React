@@ -10,19 +10,22 @@ services:
     volumes:
       - type: bind
         source: ./backend
-        target: /usr/src/app
+        target: /usr/app/src
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
   frontend:
     build:
       context: .
       dockerfile: ./docker/frontend/Dockerfile
     restart: always
     ports:
-      - 5050:3000
+      - 3000:3000
     volumes:
       - type: bind
-        source: ./frontend
-        target: /usr/src/app
+        source: ./frontend/
+        target: /usr/app/
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
+      - FLASK_DEBUG=1
