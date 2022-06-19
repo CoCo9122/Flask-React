@@ -1,20 +1,26 @@
-from flask import Flask
-from flask import request, make_response, jsonify
+from flask import Flask, request, make_response, jsonify
+from flask_socketio import SocketIO, send, emit
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app) #Cross Origin Resource Sharing
 
-@app.route("/", methods=['GET'])
-def index():
-    # items = {
-    #     {'item': "apple", 'price': 100},
-    #     {'item': "orange", 'price': 120},
-    #     {'item': "grape", 'price': 300},
-    #     {'item': "melon", 'price': 400}
-    # }
-    items = {'item': "apple", 'price': 120}
-    return make_response(items)
+app.debug = True
+app.config['SECRET_KEY'] = 'secret!'
+
+socket_io = SocketIO(app, cors_allowed_origins="*")
+
+@socket_io.on('connect')
+def test_connect():
+    print('Client connect')
+
+@socket_io.on('disconnect')
+def test_disconnect():
+    print('Client disconnect')
+
+@socket_io.on('message')
+def test_disconnect(data):
+    print(str(data))
+    
 
 if __name__ == "__main__":
-  app.run(host='0.0.0.0', port=80, debug=True)
+    socket_io.run(app, host='0.0.0.0', port=5000)
