@@ -5,7 +5,7 @@ WORKDIR /usr/app/src
 RUN pip install --upgrade pip
 RUN pip install flask
 RUN pip install flask-cors
-RUN pip install flask_socketio
+RUN pip install flask-socketio
 
 EXPOSE 80
 
