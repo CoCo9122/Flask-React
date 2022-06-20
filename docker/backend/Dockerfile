@@ -9,4 +9,4 @@ RUN pip install flask-socketio
 
 EXPOSE 80
 
-CMD ["python", "server.py"]
+CMD ["python", "-u", "server.py"]
