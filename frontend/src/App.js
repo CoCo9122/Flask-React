@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"
 import axios from 'axios'
 
-import { Box, Stack, VStack, HStack, Flex, Text } from '@chakra-ui/react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { Box, Text } from '@chakra-ui/react'
 
 const App = () => {
 

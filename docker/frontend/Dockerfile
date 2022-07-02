@@ -1,4 +1,4 @@
-FROM node:16-buster-slim
+FROM node
 
 WORKDIR /usr/app/
 
@@ -8,4 +8,4 @@ RUN npm install
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
