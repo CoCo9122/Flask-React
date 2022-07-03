@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from flask_healthz import healthz
 import os
 
 from exsample1.exsample1 import exsample1_bp
@@ -20,6 +21,14 @@ def create_app():
     init_db(app)
     
     app.register_blueprint(exsample1_bp, url_prefix='/exsample1')
+    app.register_blueprint(healthz, url_prefix='/healthz')
+
+    app.config.update(
+    HEALTHZ = {
+        "live": "healthz_cheak.healthz_cheak.liveness",
+        "ready": "healthz_cheak.healthz_cheak.readiness",
+    }
+)
 
     return app
 

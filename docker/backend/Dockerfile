@@ -8,6 +8,7 @@ RUN pip install flask-cors
 RUN pip install Flask-Migrate
 RUN pip install flask_sqlalchemy 
 RUN pip install psycopg2-binary
+RUN pip install flask_healthz
 
 EXPOSE 80
 
