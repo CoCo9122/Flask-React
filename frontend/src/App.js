@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react"
-import axios from 'axios'
+import React from "react"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Box, Text } from '@chakra-ui/react'
+import TopPage from "./components/pages/TopPage";
 
 const App = () => {
 
     return(
-        <Box>
-            <Text>Hello</Text>
-        </Box>
+        <Router>
+            <Routes>
+                <Route path={'/'} element={<TopPage />} />
+            </Routes>
+        </Router>
     )
 }
 
